@@ -26,10 +26,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Create Google Credentials from Secrets
-        # This step securely re-creates your secret JSON files on the server
         run: |
           echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > credentials.json
-          echo "${{ secrets.GCP_TOKEN_JSON }}" > token.json
+          echo "${{ secrets.GCP_TOKEN_JSON }}" | base64 --decode > token.json
 
       - name: Run the AI Agent
         # This step passes your other secrets to the script as environment variables
