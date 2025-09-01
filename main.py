@@ -42,6 +42,7 @@ TRUSTED_DOMAINS = ["iitm.ac.in"] # Add any other trusted domains
 OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity", "career"]
 
 # --- SETUP AND AUTHENTICATION ---
+
 def authenticate_google_services():
     """Authenticates using OAuth with refresh token for automation."""
     try:
@@ -86,6 +87,7 @@ def authenticate_google_services():
     except Exception as e:
         print(f"❌ Authentication error: {e}")
         raise
+
 
 def configure_gemini():
     """Configures the Gemini AI model."""
@@ -263,7 +265,7 @@ def extract_initial_details_with_ai(model, email_details, resume_text):
     - A Software development internship for a datascience student with low level skill/expirence in development should score 5-7.
     - BE CONSERVATIVE - default to lower scores when in doubt.
 
-    The required fields are: "Application Deadline", "Company/Institution", "Role Title", "Opportunity Type", "Role Field", "Location", "Work Mode", "Duration", "Time Commitment", "Stipend Details", "Required Skills", "Job Description (JD)", "Application Link", "Relevance Score (1-10)".
+    The required fields are: "Application Deadline", "Institution/Company", "Role Title", "Opportunity Type", "Role Field", "Location", "Work Mode", "Duration", "Time Commitment", "Stipend Details", "Required Skills", "Job Description (JD)", "Application Link", "Relevance Score (1-10)".
 
     CANDIDATE'S RESUME: --- {resume_text[:2000]} --- [truncated if too long]
     EMAIL CONTENT: --- Subject: {email_details['subject']}; From: {email_details['sender_raw']}; Body: {email_details['body'][:1000]} --- [truncated if too long]
@@ -272,7 +274,7 @@ def extract_initial_details_with_ai(model, email_details, resume_text):
     Provide ONLY the JSON output with no additional text:
     {{
         "Application Deadline": "value",
-        "Company/Institution": "value",
+        "Institution/Company": "value",
         "Role Title": "value",
         "Opportunity Type": "value",
         "Role Field": "value",
@@ -332,7 +334,7 @@ def update_details_with_ai(model, existing_data_json, new_email_details):
     - If the new email contains no new information about any of the possible fields, return an empty JSON object {{}}.
     - Do not include fields that are not mentioned in the new email.
 
-    POSSIBLE FIELDS: "Application Deadline", "Company/Institution", "Role Title", "Opportunity Type", "Role Field", "Location", "Work Mode", "Duration", "Time Commitment", "Stipend Details", "Required Skills", "Job Description (JD)", "Application Link".
+    POSSIBLE FIELDS: "Application Deadline", "Institution/Company", "Role Title", "Opportunity Type", "Role Field", "Location", "Work Mode", "Duration", "Time Commitment", "Stipend Details", "Required Skills", "Job Description (JD)", "Application Link".
     
     NEW EMAIL CONTENT:
     ---
@@ -357,7 +359,7 @@ def format_row_from_json(thread_id, email_details, extracted_data):
     return [
         thread_id, time.strftime("%Y-%m-%d %H:%M:%S"),
         extracted_data.get("Application Deadline", "N/A"), email_details["sender_raw"],
-        extracted_data.get("Company/Institution", "N/A"), extracted_data.get("Role Title", "N/A"),
+        extracted_data.get("Institution/Company", "N/A"), extracted_data.get("Role Title", "N/A"),
         extracted_data.get("Opportunity Type", "N/A"), extracted_data.get("Role Field", "N/A"),
         extracted_data.get("Location", "N/A"), extracted_data.get("Work Mode", "N/A"),
         extracted_data.get("Duration", "N/A"), extracted_data.get("Time Commitment", "N/A"),
@@ -371,7 +373,7 @@ def format_opportunity_for_telegram(data_dict):
     """Formats a new opportunity message, fully sanitized for MarkdownV2."""
     # Sanitize all the raw text from the dictionary first
     title = sanitize_telegram_markdown(data_dict.get("Role Title", "N/A"))
-    company = sanitize_telegram_markdown(data_dict.get("Company/Institution", "N/A"))
+    company = sanitize_telegram_markdown(data_dict.get("Institution/Company", "N/A"))
     deadline = sanitize_telegram_markdown(data_dict.get("Application Deadline", "N/A"))
     location = sanitize_telegram_markdown(data_dict.get("Location", "N/A"))
     mode = sanitize_telegram_markdown(data_dict.get("Work Mode", "N/A"))
@@ -390,7 +392,7 @@ def format_update_for_telegram(original_data, merged_data):
     """Formats an update message, fully sanitized for MarkdownV2."""
     # Sanitize the main identifiers
     title = sanitize_telegram_markdown(merged_data.get("Role Title", "N/A"))
-    company = sanitize_telegram_markdown(merged_data.get("Company/Institution", "N/A"))
+    company = sanitize_telegram_markdown(merged_data.get("Institution/Company", "N/A"))
     
     changes = []
     for key, new_value in merged_data.items():
