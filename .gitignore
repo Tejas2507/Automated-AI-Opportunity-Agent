@@ -1,15 +1,5 @@
-# Python General
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
+# Python virtual environment
 venv/
-.venv/
-ENV/
-env/
-env.bak/
-venv.bak/
 
 # Secret Files - CRITICAL
 .env
@@ -20,7 +10,6 @@ token.json
 resume.txt
 processed_emails.json
 
-# IDE and OS specific
+# IDE and cache files
+__pycache__/
 .vscode/
-.idea/
-*.DS_Store
