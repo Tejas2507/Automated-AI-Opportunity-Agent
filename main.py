@@ -408,7 +408,7 @@ def format_update_for_telegram(original_data, merged_data):
     change_summary = "\n".join(changes)
     update_header = sanitize_telegram_markdown("The following details were updated:")
     
-    return (f"*Update: {title}*\n"
+    return (f"*Opportunity: {title}*\n"
             f"*Company:* {company}\n\n"
             f"{update_header}\n"
             f"{change_summary}")
