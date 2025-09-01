@@ -42,18 +42,50 @@ TRUSTED_DOMAINS = ["iitm.ac.in"] # Add any other trusted domains
 OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity", "career"]
 
 # --- SETUP AND AUTHENTICATION ---
-
 def authenticate_google_services():
-    creds = None
-    if os.path.exists("token.json"):
-        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-    if not creds or not creds.valid:
-        raise Exception("Authentication failed or token expired. Please run auth.py again.")
-    
-    gmail_service = build("gmail", "v1", credentials=creds)
-    gc = gspread.authorize(creds)
-    # Return the creds object as well
-    return gmail_service, gc, creds
+    """Authenticates using OAuth with refresh token for automation."""
+    try:
+        # Try to use existing token first
+        if os.path.exists("token.json"):
+            creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+            if creds and creds.valid:
+                print("✅ Using valid existing token")
+                return build("gmail", "v1", credentials=creds), gspread.authorize(creds), creds
+                
+        # If no valid token, use refresh token from environment
+        refresh_token = os.getenv('GOOGLE_REFRESH_TOKEN')
+        client_id = os.getenv('GOOGLE_CLIENT_ID')
+        client_secret = os.getenv('GOOGLE_CLIENT_SECRET')
+        
+        if not all([refresh_token, client_id, client_secret]):
+            raise Exception("Missing OAuth credentials. Please set GOOGLE_REFRESH_TOKEN, GOOGLE_CLIENT_ID, and GOOGLE_CLIENT_SECRET environment variables.")
+        
+        print("🔄 Refreshing token using refresh token...")
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=SCOPES
+        )
+        
+        # Refresh the token
+        from google.auth.transport.requests import Request
+        creds.refresh(Request())
+        
+        # Save the new token for next time
+        with open("token.json", "w") as token:
+            token.write(creds.to_json())
+        
+        print("✅ Successfully refreshed token")
+        gmail_service = build("gmail", "v1", credentials=creds)
+        gc = gspread.authorize(creds)
+        return gmail_service, gc, creds
+        
+    except Exception as e:
+        print(f"❌ Authentication error: {e}")
+        raise
 
 def configure_gemini():
     """Configures the Gemini AI model."""
