@@ -136,7 +136,7 @@ def save_processed_email(email_id, processed_ids):
 
 # --- EMAIL PROCESSING ---
 
-def get_emails(service, search_query="newer_than:2h"):
+def get_emails(service, search_query="newer_than:1h"):
     """Fetches a list of email message IDs."""
     try:
         response = service.users().messages().list(userId="me", q=search_query).execute()
@@ -466,7 +466,7 @@ def main():
     print(f"Found {len(processed_email_ids)} recent processed emails and {len(existing_thread_ids)} records in the sheet.")
     
     # 2. Get all emails from the last 24 hours
-    messages = get_emails(gmail_service, search_query="newer_than:2h")
+    messages = get_emails(gmail_service, search_query="newer_than:1h")
     if not messages:
         print("No new emails in the last 6 hours. Exiting.")
         return
