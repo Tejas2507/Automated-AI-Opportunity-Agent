@@ -1,0 +1,118 @@
+YOUR NAME
+
+ROLL NUMBER | Indian Institute of Technology Madras
+
+EDUCATION AND SCHOLASTIC ACHIEVEMENTS
+------
+------
+-------
+
+Institution: 
+
+--------
+-----
+------
+
+
+EXAMPLE - 
+
+
+PROFESSIONAL EXPERIENCE
+
+AI Engineering Intern at VoiceQube
+Project: Immersive Cinematic Storyboarding with LLM Agents 
+Orchestrated a multi-agent workflow using LangGraph and a FastAPI backend for user interaction and modular pipelines. 
+Utilized frontier LLMs (GPT-5, Grok-4) as agents for script parsing, shot division, and asset generation with schema-enforced JSON outputs. 
+Integrated ElevenLabs for Text-to-Speech synthesis and a SeedDance model for storyboard-to-animation in pre-production. 
+
+
+Upcoming Internships 
+AI Research Scientist (Summer Intern) at Fractal Analytics 
+Dynamic Pricing Optimization (Remote Intern) at DiLytics 
+
+RESEARCH EXPERIENCE
+Cybersecurity in Electric Drives Using Real-Time ML-Based Anomaly Detection 
+
+Developed a detection system for cyberattacks on electric motor drives. 
+Engineered a physics-informed LSTM model to transform raw current signals into rich features. 
+Achieved over 99% classification accuracy on unseen, microsecond-resolution data. 
+
+PROJECTS
+
+Dual-Mode Lane Detection System for ADAS (Aug-Sep 2024) 
+Built a custom dataset of over 650 CVAT annotated frames, enhanced with data augmentation. 
+Trained a YOLOv10s model, achieving up to 94.2% mAP@0.50 and an F1-score of 0.87 for white stripes. 
+Designed conditional logic to use YOLO when stripes are detected and a Canny Edge detection with Hough fallback otherwise. 
+Deployed a real-time prototype with a live GUI for on-device performance tuning. 
+
+
+Advanced Language Model Engineering & Specialized Fine-Tuning (Apr-Jun 2025) 
+Built a GPT-2 style LLM from scratch in PyTorch, pre-trained on Harry Potter books. 
+Fine-tuned GPT-2 for spam classification, achieving over 90% accuracy. 
+Fine-tuned Mistral-7B with QLORA for medical MCQ answering. 
+Developed a hybrid Hangman solver using Transformers and fine-tuned CANINE models, achieving a ~0.55 win ratio. 
+
+
+Improving Imbalanced Classification using Hybrid Quantum Neural Networks 
+Supervisor: Prof. Chandrashekar L 
+Trained an HQNN on a 1:577 Credit Fraud dataset, reducing false negatives by 5% compared to classical models. 
+Applied a ResNet18 + 8-qubit QCNN on melanoma data, outperforming a classical model by 3% with fewer parameters. 
+Trained a 6-qubit HQNN on Higgs Boson data, achieving a Macro F1-score of 0.80. 
+
+
+Reinforcement Learning Projects 
+
+Implemented SARSA and Q-Learning on CartPole, Mountain Car, and MiniGrid environments. 
+Trained Dueling-DQN and MC REINFORCE models on Acrobot and CartPole. 
+Developed SMDP and Intra-option Q-learning methods in the Taxi-v3 domain for hierarchical policies. 
+
+
+Automated Tray-Shifting Mechanism for Vertical Farming 
+
+Developed and patented automated tray system for vertical farming. 
+Designed and validated kinematics for tray selection and movement using MotionGen. 
+Refined designs and simulations in Fusion 360 for reliable deployment. 
+
+
+Image Captioning with Transfer Learning and Transformer Decoder (Mar-Apr 2025) 
+Used EfficientNetV2 as an encoder with a Transformer decoder, trained on Flickr8k and COCO 2017 datasets. 
+Achieved a ROUGE_L score of 0.52 and SPICE score of 0.14. 
+Deployed the model using Streamlit for real-time caption generation. 
+
+
+SKILLS
+Languages: Python, C/C++, Matlab, SQL 
+Frameworks: PyTorch, Tensorflow, Scikit-Learn, LangGraph, Pennylane, Qiskit, WandB 
+Libraries: Numpy, Pandas, OpenAI Gym, Matplotlib, Huggingface, PEFT 
+Software: AWS, Arduino, Ansys, AutoCAD, Lightroom, Photoshop 
+
+
+
+
+Courses: Reinforcement Learning, Data Structures & Algorithms, Quantum Computing & ML, Deep Learning for Computer Vision, Game Theory. 
+
+CERTIFICATIONS
+
+Deep Learning Specialization (Coursera) (Dec 2024 - Jan 2025) 
+Certified by Prof. Andrew Ng with over 95% scores in all five courses. 
+Built a face recognition system with one-shot learning, a U-Net model for image segmentation, and RNN/LSTM models for jazz generation and trigger word detection. 
+
+Generative AI with Large Language Models (Coursera) (May-Jun 2025) 
+Certified by DeepLearning.AI, mastering the LLM lifecycle. 
+Fine-tuned LLMs using PEFT (LORA, QLORA), implemented RAG and RLHF pipelines, and evaluated models with BLEU and ROUGE. 
+
+
+POSITIONS OF RESPONSIBILITY
+
+Cinematography Chief, IITMTV (Apr 2024 - May 2025) 
+Led a 10-member creative team, ensuring project delivery and providing hands-on training. 
+Directed projects that reached over 200,000 views on YouTube. 
+
+Academic Buddy Mentor 
+Provided one-on-one academic mentoring to juniors on course selection, exam prep, and curriculum navigation. 
+
+EXTRA-CURRICULAR ACTIVITIES
+Photography: Passionate photographer with a dedicated Instagram page followed by nearly 2000 users. 
+Harmonium: Trained harmonium player, accompanying vocalists in stage events. 
+Inter-IIT Cultural Meet '23: Represented IIT Madras in 15-minute filmmaking and street play events, securing fourth place. 
+Bridge: Secured a silver medal in the Inter-Hostel Bridge Tournament. 
