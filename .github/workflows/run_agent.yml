@@ -2,9 +2,7 @@ name: Run AI Opportunity Agent
 
 on:
   schedule:
-    # Runs at the beginning of every hour, every day
     - cron: '0 * * * *'
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -25,17 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Create Google Credentials from Secrets
-        run: |
-          echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > credentials.json
-          echo "${{ secrets.GCP_TOKEN_JSON }}" | base64 --decode > token.json
-
       - name: Run the AI Agent
-        # This step passes your other secrets to the script as environment variables
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
           GOOGLE_SHEET_LINK: ${{ secrets.GOOGLE_SHEET_LINK }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
         run: python main.py
