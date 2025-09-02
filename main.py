@@ -1029,7 +1029,7 @@ def format_row_from_json(thread_id, email_details, extracted_data):
     return [
         thread_id, time.strftime("%Y-%m-%d %H:%M:%S"),
         extracted_data.get("Application Deadline", "N/A"), email_details["sender_raw"],
-        extracted_data.get("Institution/Company", "N/A"), extracted_data.get("Eligibility", "All")
+        extracted_data.get("Institution/Company", "N/A"), extracted_data.get("Eligibility", "All"),
         extracted_data.get("Role Title", "N/A"),
         extracted_data.get("Opportunity Type", "N/A"), extracted_data.get("Role Field", "N/A"),
         extracted_data.get("Location", "N/A"), extracted_data.get("Work Mode", "N/A"),
