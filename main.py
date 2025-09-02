@@ -267,9 +267,9 @@ def extract_initial_details_with_ai(model, email_details, resume_text):
 
     The required fields are: "Application Deadline", "Institution/Company", "Role Title", "Opportunity Type", "Role Field", "Location", "Work Mode", "Duration", "Time Commitment", "Stipend Details", "Required Skills", "Job Description (JD)", "Application Link", "Relevance Score (1-10)".
 
-    CANDIDATE'S RESUME: --- {resume_text[:2000]} --- [truncated if too long]
-    EMAIL CONTENT: --- Subject: {email_details['subject']}; From: {email_details['sender_raw']}; Body: {email_details['body'][:1000]} --- [truncated if too long]
-    ATTACHED DOCUMENT TEXT: --- {email_details['attachment_text'][:1000]} --- [truncated if too long]
+    CANDIDATE'S RESUME: --- {resume_text} --- [truncated if too long]
+    EMAIL CONTENT: --- Subject: {email_details['subject']}; From: {email_details['sender_raw']}; Body: {email_details['body']} --- [truncated if too long]
+    ATTACHED DOCUMENT TEXT: --- {email_details['attachment_text'][:4000]} --- [truncated if too long]
 
     Provide ONLY the JSON output with no additional text:
     {{
@@ -468,7 +468,7 @@ def main():
     # 2. Get all emails from the last 24 hours
     messages = get_emails(gmail_service, search_query="newer_than:1h")
     if not messages:
-        print("No new emails in the last 6 hours. Exiting.")
+        print("No new emails in the last 1 hours. Exiting.")
         return
         
     print(f"Found {len(messages)} emails from the last 6 hours to check.")
