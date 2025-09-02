@@ -1,12 +1,12 @@
 # 🤖 AI Opportunity Agent
 
-An autonomous Python agent that monitors a Gmail inbox, identifies career opportunities (internships, research, jobs), extracts key details using AI, and organizes them in a Google Sheet. It sends real-time notifications for high-relevance opportunities to a Telegram group.
+An autonomous Python agent that monitors a Gmail inbox, identifies career opportunities (internships, research, jobs), extracts key details using AI, and organizes them in a Google Sheet. It sends real-time notifications for opportunities to a Telegram group.
 
 ---
 ## ✨ Features
 
 * **Smart Filtering:** Automatically ignores personal emails, promotional content, and irrelevant announcements by checking sender domains, keywords, and using an AI classifier.
-* **Intelligent Extraction:** Uses Google's Gemini 1.5 Flash to parse email bodies and attachments (PDF/DOCX) to extract 18 key data points, including role, company, deadline, and stipend.
+* **Intelligent Extraction:** Uses Google's Gemini 1.5 Flash to parse email bodies and attachments (PDF/DOCX) to extract 20 key data points, including role, company, deadline, and stipend.
 * **Personalized Relevance Scoring:** Analyzes your resume to provide a custom 1-10 relevance score for each opportunity.
 * **Automated Data Entry:** Populates a Google Sheet with all extracted information, serving as a centralized tracking dashboard.
 * **Thread-Aware Updates:** Intelligently handles follow-up emails in the same thread, updating existing records with new information (e.g., deadline changes) and highlighting the changes in red.
@@ -21,7 +21,7 @@ The agent operates on a schedule, performing a series of checks and actions.
 
 
 1.  **Schedule Trigger:** A GitHub Actions cron job wakes the agent up every hour.
-2.  **Fetch Emails:** The agent connects to the Gmail API and fetches emails from the last 2 hours.
+2.  **Fetch Emails:** The agent connects to the Gmail API and fetches emails from the last 1 hour.
 3.  **Filter Pipeline:** Each email is passed through a series of filters:
     * **Processed Check:** Skips emails it has seen before (using `processed_emails.json`).
     * **Personal Check:** Skips emails sent to a small number of recipients.
