@@ -40,7 +40,7 @@ MY_EMAIL_ADDRESS = "ed22b004@smail.iitm.ac.in"
 
 # --- FILTERS ---
 TRUSTED_DOMAINS = ["iitm.ac.in"] # Add any other trusted domains
-OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity", "career"]
+OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity"]
 
 # --- SETUP AND AUTHENTICATION ---
 
