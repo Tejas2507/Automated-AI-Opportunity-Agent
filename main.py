@@ -137,13 +137,10 @@ def save_processed_email(email_id, processed_ids):
 
 # --- EMAIL PROCESSING ---
 
-def get_emails(service, search_query="newer_than:1h"):
-    """Fetches a list of email message IDs, excluding sent mail."""
-    # Add the exclusion filter for your own email address
-    full_query = f"{search_query} -from:{MY_EMAIL_ADDRESS}"
-    print(f"Using Gmail search query: '{full_query}'") # Helpful for debugging
+def get_emails(service, search_query="newer_than:2h"):
+    """Fetches a list of email message IDs."""
     try:
-        response = service.users().messages().list(userId="me", q=full_query).execute()
+        response = service.users().messages().list(userId="me", q=search_query).execute()
         return response.get("messages", [])
     except HttpError as error:
         print(f"An error occurred fetching emails: {error}")
