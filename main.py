@@ -40,7 +40,7 @@ MY_EMAIL_ADDRESS = "ed22b004@smail.iitm.ac.in"
 
 # --- FILTERS ---
 TRUSTED_DOMAINS = ["iitm.ac.in"] # Add any other trusted domains
-OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity"]
+OPPORTUNITY_KEYWORDS = ["internship", "hiring", "research fellowship", "research internship", "fellowship", "recruiting", "job alert", "job opportunity","Opportunity"]
 
 # --- SETUP AND AUTHENTICATION ---
 
@@ -138,14 +138,17 @@ def save_processed_email(email_id, processed_ids):
 # --- EMAIL PROCESSING ---
 
 def get_emails(service, search_query="newer_than:2h"):
-    """Fetches a list of email message IDs."""
+    """Fetches a list of email message IDs, excluding sent mail."""
+    # Add the exclusion filter for your own email address
+    full_query = f"{search_query} -from:{MY_EMAIL_ADDRESS}"
+    print(f"Using Gmail search query: '{full_query}'") # Helpful for debugging
     try:
-        response = service.users().messages().list(userId="me", q=search_query).execute()
+        response = service.users().messages().list(userId="me", q=full_query).execute()
         return response.get("messages", [])
     except HttpError as error:
         print(f"An error occurred fetching emails: {error}")
         return []
-
+        
 def get_email_metadata(service, msg_id):
     """Fetches basic email details without parsing attachments. Returns attachment info for later."""
     try:
