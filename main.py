@@ -500,7 +500,7 @@ def main():
         print("No new emails in the last 1 hours. Exiting.")
         return
         
-    print(f"Found {len(messages)} emails from the last 6 hours to check.")
+    print(f"Found {len(messages)} emails from the last 1 hour to check.")
     
     # 3. Loop through all fetched emails
     for msg in messages:
@@ -533,7 +533,6 @@ def main():
             
         print(f"✅ Email passed initial filters: '{email_metadata['subject']}'")
         
-        # --- ONLY NOW: Fetch and parse attachments (slow) ---
         attachment_text = ""
         if email_metadata['attachment_ids']:
             print("📄 Checking for parsable attachments...")
