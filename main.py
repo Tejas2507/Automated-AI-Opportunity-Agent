@@ -492,7 +492,7 @@ def main():
     print(f"Found {len(processed_email_ids)} recent processed emails and {len(existing_thread_ids)} records in the sheet.")
     
     # 2. Get all emails from the last 24 hours
-    messages = get_emails(gmail_service, search_query="newer_than:1h")
+    messages = get_emails(gmail_service, search_query="newer_than:2h")
     if not messages:
         print("No new emails in the last 1 hours. Exiting.")
         return
