@@ -137,7 +137,7 @@ def save_processed_email(email_id, processed_ids):
 
 # --- EMAIL PROCESSING ---
 
-def get_emails(service, search_query="newer_than:2h"):
+def get_emails(service, search_query="newer_than:1h"):
     """Fetches a list of email message IDs, excluding sent mail."""
     # Add the exclusion filter for your own email address
     full_query = f"{search_query} -from:{MY_EMAIL_ADDRESS}"
@@ -234,7 +234,7 @@ def fetch_and_parse_attachments(service, msg_id, attachment_list):
 
 def is_opportunity_ai_check(model, email_text):
     """Uses AI to classify if an email is an opportunity."""
-    prompt = f"Analyze the following email text. Is this a career opportunity (internship, job, research, fellowship)? | avoid Events, Shows and Talks. Respond with only the word YES or NO.\n\nEMAIL TEXT:\n---\n{email_text}\n---"
+    prompt = f"Analyze the following email text. Is this a career opportunity (internship, job, research, fellowship)? | Strictly avoid Events, Shows , Talks and Presentations. Respond with only the word YES or NO.\n\nEMAIL TEXT:\n---\n{email_text}\n---"
     response = model.generate_content(prompt)
     return "yes" in response.text.lower()
 
@@ -495,7 +495,7 @@ def main():
     print(f"Found {len(processed_email_ids)} recent processed emails and {len(existing_thread_ids)} records in the sheet.")
     
     # 2. Get all emails from the last 24 hours
-    messages = get_emails(gmail_service, search_query="newer_than:2h")
+    messages = get_emails(gmail_service, search_query="newer_than:1h")
     if not messages:
         print("No new emails in the last 1 hours. Exiting.")
         return
