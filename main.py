@@ -280,7 +280,7 @@ def extract_initial_details_with_ai(model, email_details, resume_text):
     CRITICAL INSTRUCTION FOR RELEVANCE SCORING:
     - Be VERY strict when calculating the "Relevance Score (1-10)". This score should reflect how well the opportunity matches the candidate's profile.
     - Analyze the candidate's resume thoroughly and compare it with the opportunity requirements.
-    - Score based on: field of study match, skills match, experience level, and overall fit.
+    - Score based on: Eligibility (if the candidate is Dual Degree/BTech student and Eligibility is of PhD or Masters 'ONLY' Then score 0) , field of study match, skills match, experience level, and overall fit.
     - A score of 10 means perfect match (all requirements met, ideal field).
     - A score of 7-9 means strong match (most requirements met, relevant field).
     - A score of 4-6 means moderate match (some requirements met, somewhat related field).
