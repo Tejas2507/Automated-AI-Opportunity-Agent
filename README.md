@@ -6,7 +6,7 @@ An autonomous Python agent that monitors a Gmail inbox, identifies career opport
 ## ✨ Features
 
 * **Smart Filtering:** Automatically ignores personal emails, promotional content, and irrelevant announcements by checking sender domains, keywords, and using an AI classifier.
-* **Intelligent Extraction:** Uses Google's Gemini 1.5 Flash to parse email bodies and attachments (PDF/DOCX) to extract 20 key data points, including role, company, deadline, and stipend.
+* **Intelligent Extraction:** Uses Google's Gemini 2.0 Flash to parse email bodies and attachments (PDF/DOCX) to extract 20 key data points, including role, company, deadline, and stipend.
 * **Personalized Relevance Scoring:** Analyzes your resume to provide a custom 1-10 relevance score for each opportunity.
 * **Automated Data Entry:** Populates a Google Sheet with all extracted information, serving as a centralized tracking dashboard.
 * **Thread-Aware Updates:** Intelligently handles follow-up emails in the same thread, updating existing records with new information (e.g., deadline changes) and highlighting the changes in red.
