@@ -234,7 +234,7 @@ def fetch_and_parse_attachments(service, msg_id, attachment_list):
 
 def is_opportunity_ai_check(model, email_text):
     """Uses AI to classify if an email is an opportunity."""
-    prompt = f"Analyze the following email text. Is this a career opportunity (internship, job, research, fellowship)? | Strictly avoid Events, Shows , Talks and Presentations. Respond with only the word YES or NO.\n\nEMAIL TEXT:\n---\n{email_text}\n---"
+    prompt = f"Analyze the following email text. Is this a career opportunity (internship, job, research, fellowship)? | **Please Strictly avoid Events, Shows , Talks and Presentations [aggressively check for these , and avoid anything other than legitemate opportunities at any costs]**. Respond with only the word YES or NO.\n\nEMAIL TEXT:\n---\n{email_text}\n---"
     response = model.generate_content(prompt)
     return "yes" in response.text.lower()
 
