@@ -7,3 +7,4 @@ python-dotenv
 python-docx
 pyPDF2
 requests
+packaging>=21.0
